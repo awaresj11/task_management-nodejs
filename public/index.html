@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc"><title>Taskflow — Task Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 16.5 13 22l12-13"/><path d="M16 3.5 27.5 10v12L16 28.5 4.5 22V10z"/></svg></span><span>taskflow<span class="brand-dot">.</span></span></a>
+      <div class="workspace"><div class="workspace-avatar">S</div><div><strong>Studio workspace</strong><small>Free plan</small></div><span class="chevron">⌄</span></div>
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="all"><span class="nav-icon">▦</span> Overview <span class="nav-count" id="navAllCount">0</span></button>
+        <button class="nav-item" data-view="todo"><span class="nav-icon">◷</span> To do <span class="nav-count" id="navTodoCount">0</span></button>
+        <button class="nav-item" data-view="in-progress"><span class="nav-icon">◉</span> In progress <span class="nav-count" id="navProgressCount">0</span></button>
+        <button class="nav-item" data-view="done"><span class="nav-icon">✓</span> Completed <span class="nav-count" id="navDoneCount">0</span></button>
+      </nav>
+      <div class="nav-label projects-label">YOUR SPACE <button class="tiny-plus" id="addProjectBtn" aria-label="Add project">+</button></div>
+      <div class="project-link"><span class="project-dot purple"></span> Product design <span class="project-number">04</span></div>
+      <div class="project-link"><span class="project-dot orange"></span> Website revamp <span class="project-number">06</span></div>
+      <div class="project-link"><span class="project-dot green"></span> Marketing <span class="project-number">03</span></div>
+      <div class="sidebar-bottom"><div class="help-card"><div class="help-icon">✦</div><strong>Need a hand?</strong><p>Discover tips to get more out of Taskflow.</p><button id="tipsBtn">Explore tips <span>↗</span></button><div class="help-orb orb-one"></div><div class="help-orb orb-two"></div></div><button class="nav-item settings-item" id="settingsBtn"><span class="nav-icon">⚙</span> Settings</button><div class="profile"><div class="profile-avatar">SA</div><div class="profile-text"><strong>Swapna Aware</strong><small>Personal workspace</small></div><span class="more">···</span></div></div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button><div class="breadcrumbs">Workspace <span>/</span> <strong id="breadcrumbTitle">Overview</strong></div><div class="top-actions"><button class="icon-button search-shortcut" id="focusSearch" aria-label="Search">⌕ <span>Search</span><kbd>⌘ K</kbd></button><button class="icon-button notification" aria-label="Notifications">♧<i></i></button><div class="top-avatar">SA</div></div></header>
+      <div class="page-wrap">
+        <section class="welcome-row"><div><div class="eyebrow"><span class="sparkle">✳</span> THURSDAY, OCTOBER 15</div><h1 id="pageTitle">Good evening, Swapna <span class="wave">✦</span></h1><p class="subtitle">Here's what's happening with your projects today.</p></div><button class="primary-button" id="newTaskBtn"><span>＋</span> New task</button></section>
+        <section class="stats-grid" aria-label="Task summary">
+          <article class="stat-card"><div class="stat-top"><span>Total tasks</span><span class="stat-icon lavender">▦</span></div><div class="stat-value" id="totalStat">0</div><div class="stat-foot"><span class="trend-up">↗ Live</span><span>across your workspace</span></div><div class="mini-bars" aria-hidden="true"><i style="height:25%"></i><i style="height:38%"></i><i style="height:31%"></i><i style="height:54%"></i><i style="height:42%"></i><i style="height:66%"></i><i style="height:57%"></i><i style="height:80%"></i><i style="height:70%"></i><i style="height:100%"></i></div></article>
+          <article class="stat-card"><div class="stat-top"><span>In progress</span><span class="stat-icon blue">◉</span></div><div class="stat-value" id="progressStat">0</div><div class="stat-foot"><span class="muted-dot blue-dot"></span><span>Work currently moving</span></div><div class="progress-track"><span id="progressBar"></span></div></article>
+          <article class="stat-card"><div class="stat-top"><span>Completed</span><span class="stat-icon mint">✓</span></div><div class="stat-value" id="doneStat">0</div><div class="stat-foot"><span class="trend-up">✦ Nice work!</span><span>tasks finished</span></div><div class="completion-ring" id="completionRing"><div><strong id="completionPercent">0%</strong><small>done</small></div></div></article>
+          <article class="stat-card"><div class="stat-top"><span>To do</span><span class="stat-icon peach">◷</span></div><div class="stat-value" id="todoStat">0</div><div class="stat-foot"><span class="muted-dot peach-dot"></span><span>Ready when you are</span></div><div class="todo-sparkline"><svg viewBox="0 0 150 42" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 C15 28 18 32 30 19 S48 32 60 20 S78 24 91 12 S111 25 122 10 S140 12 150 3"/></svg></div></article>
+        </section>
+        <section class="task-panel">
+          <div class="panel-heading"><div><h2 id="listTitle">Your tasks <span class="heading-count" id="visibleCount">0</span></h2><p>A little progress each day adds up.</p></div><div class="panel-tools"><label class="search-box"><span>⌕</span><input id="taskSearch" type="search" placeholder="Search tasks..." aria-label="Search tasks"></label><select id="priorityFilter" aria-label="Filter by priority"><option value="all">All priorities</option><option value="high">High priority</option><option value="medium">Medium priority</option><option value="low">Low priority</option></select><button class="filter-button" id="clearFilters" title="Clear filters">↺</button></div></div>
+          <div class="task-tabs" role="tablist" aria-label="Task status filter"><button class="task-tab selected" data-tab="all">All tasks <span id="tabAll">0</span></button><button class="task-tab" data-tab="todo">To do <span id="tabTodo">0</span></button><button class="task-tab" data-tab="in-progress">In progress <span id="tabProgress">0</span></button><button class="task-tab" data-tab="done">Completed <span id="tabDone">0</span></button><div class="tab-spacer"></div><button class="view-toggle active" id="listViewBtn" aria-label="List view">☷</button><button class="view-toggle" id="gridViewBtn" aria-label="Grid view">▦</button></div>
+          <div class="task-table-wrap"><table class="task-table"><thead><tr><th class="check-col"></th><th>TASK NAME</th><th>STATUS</th><th>PRIORITY</th><th>DUE DATE</th><th class="action-col"></th></tr></thead><tbody id="taskRows"><tr><td colspan="6" class="loading-cell">Loading your tasks…</td></tr></tbody></table></div>
+          <div class="empty-state" id="emptyState" hidden><div class="empty-illustration">✦</div><h3>No tasks found</h3><p>Try changing your filters or create a fresh task.</p><button class="primary-button" id="emptyNewTask">＋ Create a task</button></div>
+          <div class="table-footer"><span id="footerCount">Showing 0 tasks</span><span class="footer-note"><span class="online-dot"></span> All changes saved automatically</span></div>
+        </section>
+        <footer class="page-footer"><span>Made for focused work <span class="footer-heart">♥</span></span><span>Taskflow <span class="footer-sep">·</span> Keep moving forward</span></footer>
+      </div>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="taskModal" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-header"><div><span class="modal-kicker">MAKE IT HAPPEN</span><h2 id="modalTitle">Create a task</h2><p>Break your next big thing into a small step.</p></div><button class="close-modal" id="closeModal" aria-label="Close dialog">×</button></div><form id="taskForm"><label class="field-label" for="taskTitle">Task name <span>*</span></label><input id="taskTitle" name="title" required maxlength="120" placeholder="e.g. Review the new landing page"><label class="field-label" for="taskDescription">Description <span class="optional">Optional</span></label><textarea id="taskDescription" name="description" rows="3" maxlength="500" placeholder="Add a few details to help you get started..."></textarea><div class="form-row"><div><label class="field-label" for="taskStatus">Status</label><select id="taskStatus" name="status"><option value="todo">To do</option><option value="in-progress">In progress</option><option value="done">Completed</option></select></div><div><label class="field-label" for="taskPriority">Priority</label><select id="taskPriority" name="priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></div></div><div class="form-row"><div><label class="field-label" for="taskCategory">Project / category</label><input id="taskCategory" name="category" maxlength="40" placeholder="General"></div><div><label class="field-label" for="taskDueDate">Due date</label><input id="taskDueDate" name="dueDate" type="date"></div></div><div class="modal-actions"><button type="button" class="secondary-button" id="cancelModal">Cancel</button><button type="submit" class="primary-button" id="saveTaskBtn">Create task <span>→</span></button></div><p class="form-error" id="formError" role="alert"></p></form></section></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body></html>
