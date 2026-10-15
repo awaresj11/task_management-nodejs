@@ -1,0 +1,10 @@
+{
+  "name": "task-management-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A beautiful task management dashboard built with Node.js 24 and Express.",
+  "main": "server.js",
+  "scripts": { "start": "node server.js", "dev": "node --watch server.js" },
+  "engines": { "node": ">=24 <25" },
+  "dependencies": { "express": "^5.1.0" }
+}
